@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CocktailController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::name('api.')->group(function () {
+    Route::get('/cocktails', [CocktailController::class, 'index'])->name('cocktails.index');
+    Route::get('/cocktails/search', [CocktailController::class, 'search'])->name('cocktails.search');
+    Route::get('/cocktails/{cocktail}', [CocktailController::class, 'show'])->name('cocktails.show');
 });
