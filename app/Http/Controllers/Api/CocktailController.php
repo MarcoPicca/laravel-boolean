@@ -11,7 +11,7 @@ class CocktailController extends Controller
 
     public function index(){
         // ? EAGER LOADING con il nome del metodo presente all'interno del model
-        $cocktails = Cocktail::all()->paginate(5);
+        $cocktails = Cocktail::paginate(5);
         return response()->json(
             [
                 "success" => true,
